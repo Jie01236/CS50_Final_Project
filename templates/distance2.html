@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Result
+{% endblock %}
+
+{% block main %}
+        <h3> The distance between {{ city1 }} and {{ city2 }} is {{ "%.2f"|format(distance) }} km.</h3>
+{% endblock %}

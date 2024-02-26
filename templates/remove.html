@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Remove
+{% endblock %}
+
+{% block main %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const departureSelect = document.getElementById('departure');
+
+
+        departureSelect.addEventListener('change', function() {
+            const selectedDeparture = this.value;
+
+            fetch('/get_destinations_dates', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ departure: selectedDeparture })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const destinationSelect = document.getElementById('destination');
+                    const dateSelect = document.getElementById('date');
+
+                    destinationSelect.innerHTML = '';
+                    dateSelect.innerHTML = '';
+
+                    data.destinations.forEach(destination => {
+                        destinationSelect.options[destinationSelect.options.length] = new Option(destination.destination, destination.destination);
+                    });
+                    data.dates.forEach(date => {
+                        dateSelect.options[dateSelect.options.length] = new Option(date.date, date.date);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    });
+</script>
+
+<form action="/remove" method="post">
+    <div class="mb-3">
+        <label for="departure" class="mb-3">Departure City:</label>
+        <select id="departure" name="departure" class="form-select">
+            <option value="" disabled selected hidden>Choose a city</option>
+            {% for departure in departures %}
+            <option value="{{ departure }}">{{ departure }}</option>
+            {%endfor%}
+        </select>
+    </div>
+
+    <div class="mb-3" id="destinationDiv">
+        <label for="destination" class="mb-3">Destination City:</label>
+        <select autocomplete="off" id="destination" name="destination" class="form-select">
+            <!-- Options will be added dynamically -->
+        </select>
+    </div>
+
+    <div class="mb-3" id="dateDiv">
+        <label for="date" class="mb-3">Date:</label>
+        <select autocomplete="off" id="date" name="date" class="form-select">
+            <!-- Options will be added dynamically -->
+        </select>
+    </div>
+
+    <button class="btn btn-primary" type="submit">REMOVE</button>
+</form>
+{% endblock %}

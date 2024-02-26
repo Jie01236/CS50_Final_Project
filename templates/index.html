@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block main %}
+<div class="centered-content">
+    <h1>So far,</h1>
+    <p>You've embarked on <span class="highlight">{{ number }}</span> journeys.</p>
+    <p>You've flown a total of <span class="highlight">{{ "%.2f"|format(update_dist) if update_dist is not none else "0.00"  }}</span> km.</p>
+    <p>We look forward to your many more adventures!</p>
+    <a href="/record" class="add-journey-btn">Add a journey now!</a>
+</div>
+{% endblock %}

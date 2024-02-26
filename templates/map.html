@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+map
+{% endblock %}
+
+{% block main %}
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" defer></script>
+    <style>
+        #map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #map {
+            height: 500px;
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map-container">
+        <div id="map"></div>
+    </div>
+
+    <script>
+
+        function fetchAndShowJourneyCoordinates() {
+            fetch('/get_journey_coordinates') 
+                .then(response => response.json())
+                .then(coordinates => {
+                    if (coordinates.length > 0) {
+
+                        var mymap = L.map('map').setView([coordinates[0].lat, coordinates[0].lon], 13);
+
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            maxZoom: 19,
+                            attribution: '© OpenStreetMap contributors'
+                        }).addTo(mymap);
+
+                        var markers = coordinates.map(function(location) {
+                            var marker = L.marker([location.lat, location.lon]).addTo(mymap)
+                                .bindPopup(location.city);
+                            return marker;
+                        });
+
+
+                        var group = new L.featureGroup(markers);
+                        mymap.fitBounds(group.getBounds());
+                    }
+                })
+                .catch(error => console.error('Error fetching coordinates:', error));
+        }
+
+
+        document.addEventListener('DOMContentLoaded', fetchAndShowJourneyCoordinates);
+    </script>
+</body>
+
+{% endblock %}

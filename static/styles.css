@@ -1,0 +1,64 @@
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* This assumes you have a header or navbar that takes up some space. Adjust as needed. */
+    text-align: center;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #007BFF; /* This is a blue color, but you can change it to whatever you prefer */
+}
+
+.add-journey-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF; /* Same blue as above */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.add-journey-btn:hover {
+    background-color: #0056b3; /* A darker blue for hover effect */
+}
+
+.navbar-brand {
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+#date {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+}
+

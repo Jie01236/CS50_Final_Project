@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+HISTORY
+{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">DEPARTURE</th>
+        <th scope="col">DESTINATION</th>
+        <th scope="col">DISTANCE</th>
+        <th scope="col">DATE</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      {% for row in flights%}
+      <tr>
+        <td>{{row["departure"]}}</td>
+        <td>{{row["destination"]}}</td>
+        <td>{{"%.2f"|format(row["distance"])}} km</td>
+        <td>{{row["date"] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+          <td></td>
+          <td></td>
+          <td><h6> Total</h6></td>
+          <td>{{ "%.2f"|format(update_dist) }} km</td>
+      </tr>
+  </tfoot>
+</table>
+{% endblock %}
