@@ -1,8 +1,5 @@
 # PROJECT TITLE: Flight Footprints: Logging Every Journey
 
-## Video Demo:  <URL https://www.youtube.com/watch?v=TVhQuoSrcBA>
-
-
 ### 1 introduction :
 
 This website was born out of my passion for travel and my fondness for documenting the cities I've visited. I found it cumbersome to constantly browse through calendars to recall my past journeys; there was no platform that offered a visual representation of the places I've been to. Therefore, I decided to design a website that could fulfill this need. Part of the design and functionality of this website came from the problemSet for week 9.
@@ -52,3 +49,5 @@ This page utilizes the Leaflet JS library to display a map with markers for the 
 
 ### 3. problems :
 The limitation of this website lies in the fact that actual flights may involve layovers or be operated by different airlines, which can result in variations in the actual flight distance. Therefore, we can only record the straight-line distance. Additionally, since we rely on a free API for distance calculations, there might be a limit to the number of queries we can make.
+
+#### Video Demo:  <URL https://www.youtube.com/watch?v=TVhQuoSrcBA>
