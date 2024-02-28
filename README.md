@@ -49,5 +49,3 @@ This page utilizes the Leaflet JS library to display a map with markers for the 
 
 ### 3. problems :
 The limitation of this website lies in the fact that actual flights may involve layovers or be operated by different airlines, which can result in variations in the actual flight distance. Therefore, we can only record the straight-line distance. Additionally, since we rely on a free API for distance calculations, there might be a limit to the number of queries we can make.
-
-#### Video Demo:  <URL https://www.youtube.com/watch?v=TVhQuoSrcBA>
